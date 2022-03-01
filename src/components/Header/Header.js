@@ -11,13 +11,13 @@ function Header(props) {
       </a>
       <nav className="header__navbar navbar">
         <ul className="navbar__list">
-          <li className="navbar_item">new</li>
-          <li className="navbar_item">past</li>
-          <li className="navbar_item">comments</li>
-          <li className="navbar_item">ask</li>
-          <li className="navbar_item">show</li>
-          <li className="navbar_item">jobs</li>
-          <li className="navbar_item">submit</li>
+          <li className="navbar_item link">new</li>
+          <li className="navbar_item link">past</li>
+          <li className="navbar_item link">comments</li>
+          <li className="navbar_item link">ask</li>
+          <li className="navbar_item link">show</li>
+          <li className="navbar_item link">jobs</li>
+          <li className="navbar_item link">submit</li>
         </ul>
       </nav>
       <a href="https://news.ycombinator.com/news" className="header__login">login</a>

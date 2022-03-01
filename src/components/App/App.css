@@ -1,15 +1,22 @@
 .page {
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
   min-height: 100vh;
-  background-color: antiquewhite;
+  background-color: rgb(246, 246, 239);
 }
 
 .page__content {
-  background-color: #fff;
   max-width: 1280px;
   min-height: 100vh;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+.link {
+  opacity: .8;
+}
+
+.link:hover {
+  opacity: 1;
 }

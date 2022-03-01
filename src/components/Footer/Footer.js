@@ -9,14 +9,14 @@ function Footer(props) {
       <p className="footer__text text">Applications are open for YC Summer 2022</p>
       <nav className="footer__navbar navbar">
         <ul className="navbar__list">
-          <li className="navbar_item">Guidelines</li>
-          <li className="navbar_item">FAQ</li>
-          <li className="navbar_item">Lists</li>
-          <li className="navbar_item">API</li>
-          <li className="navbar_item">Security</li>
-          <li className="navbar_item">Legal</li>
-          <li className="navbar_item">Apply to YC</li>
-          <li className="navbar_item">Contact</li>
+          <li className="navbar_item link">Guidelines</li>
+          <li className="navbar_item link">FAQ</li>
+          <li className="navbar_item link">Lists</li>
+          <li className="navbar_item link">API</li>
+          <li className="navbar_item link">Security</li>
+          <li className="navbar_item link">Legal</li>
+          <li className="navbar_item link">Apply to YC</li>
+          <li className="navbar_item link">Contact</li>
         </ul>
       </nav>
       <form className="form">

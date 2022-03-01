@@ -1,5 +1,5 @@
 .footer {
-  background-color: rgb(222, 235, 193);
+  background-color: inherit;
   display: flex;
   flex-direction: column;
   justify-content: center;
