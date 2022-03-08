@@ -11,12 +11,11 @@ function Comment(props) {
   React.useEffect(() => {
     api.getCommentById(props.id)
       .then((data) => {
-        !data.dead && !data.deleted && setComment(data)
+        /* !data.dead && !data.deleted &&  */setComment(data)
       })
       .catch((err) => {
         console.log(err)
       })
-
 
   }, [props.id]);
 
@@ -26,7 +25,13 @@ function Comment(props) {
         comment && (
           <li className="comments__container">
             <p className="comments__author">{comment.by}</p>
-            <div className="comments__text" dangerouslySetInnerHTML={{__html:comment.text}} />
+            {
+              !comment.dead && !comment.deleted ? (
+                <div className="comments__text" dangerouslySetInnerHTML={{__html:comment.text}} />
+              ) : (
+                <p className="comments__text" > Комментарий удален!</p>
+              )
+            }
             <p className="comments__data">{convertTimestamp(comment.time)}</p>
 
             {
