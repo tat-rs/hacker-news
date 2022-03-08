@@ -11,7 +11,7 @@ function Comment(props) {
   React.useEffect(() => {
     api.getCommentById(props.id)
       .then((data) => {
-        /* !data.dead && !data.deleted &&  */setComment(data)
+        setComment(data)
       })
       .catch((err) => {
         console.log(err)
