@@ -1,6 +1,6 @@
 .header {
   width: 100%;
-  background-color: rgb(255, 102, 0);
+  background-color: #ff6600;
   box-sizing: border-box;
   padding: 25px;
   display: flex;
@@ -10,10 +10,10 @@
 .header__logo {
   margin-right: 15px;
   display: block;
-  width: 190px;
+  width: 155px;
   height: 45px;
   background-image: url(../../images/icon.png);
-  background-size: 190px 45px;
+  background-size: 155px 45px;
   background-repeat: no-repeat;
 }
 
@@ -51,4 +51,12 @@
   font-weight: normal;
   font-size: 20px;
   line-height: 22px;
+}
+
+.header__container_size_little {
+  display: none;
+}
+
+.header__container_size_big {
+  display: flex;
 }

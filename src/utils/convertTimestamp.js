@@ -4,7 +4,8 @@ export function convertTimestamp(unixTime) {
   const month = ('0' + (date.getMonth() + 1)).slice(-2);
   const year = date.getFullYear();
 
-  const hour = date.getHours();
+  let  hour = date.getHours();
+
   const min = ('0' + date.getMinutes()).slice(-2);
   const seconds = ('0' + date.getSeconds()).slice(-2);
 

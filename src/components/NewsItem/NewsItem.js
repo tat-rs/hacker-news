@@ -1,8 +1,10 @@
 import React from "react";
-import { useHistory } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
 import api from "../../utils/api";
 import { convertTimestamp } from "../../utils/convertTimestamp";
+import Comment from "../Comment/Comment";
+import Loader from "../Loader/Loader";
 
 import './NewsItem.css';
 
@@ -15,6 +17,9 @@ function NewsItem(props) {
     api.getStory(props.id)
         .then((data) => {
           data && setNews(data)
+        })
+        .catch((err) => {
+          console.log(err)
         })
   }, []);
 
@@ -29,8 +34,16 @@ function NewsItem(props) {
 
     {
       news && (
-        <li className="news__item story" onClick={handleActiveItemClick}>
-          <h2 className="story__title">{news.title}</h2>
+        <div className="story">
+          <h2 className="story__title" onClick={handleActiveItemClick}>{news.title}</h2>
+          {
+            props.selectedNews && (
+              <>
+                <p className="story__link">Подробнее на: <a className="story__link link" href={news.url} target="_blank" rel="noopener noreferrer">{news.url}</a></p> 
+                {/* <a className="story__link link" href={news.url} target="_blank" rel="noopener noreferrer">{news.url}</a> */}
+              </>
+            )
+          }
           <div className="story__container">
             <p className="story__info">{`${news.score} points`}</p>
             <p className="story__info">{`by ${news.by}`}</p>
@@ -41,7 +54,27 @@ function NewsItem(props) {
               )
             }
           </div>
-        </li>
+          <Route path='/news/:id'>
+            
+            <Link to='/news' className="story__link-back link">Вернуться к списку новостей</Link>
+
+            {
+              news.kids ? 
+              (<div className="comments">
+                <p className="comments__count">Комментарии: {news.kids.length}</p>
+                <ul className="comments__list">
+                  {
+                  news.kids.sort().map((id) => (
+                     <Comment id={id} key={id}/>
+                    ))
+                  }
+                </ul>
+              </div>) : (
+                <p className="comments__count">Пока нет комментариев</p>
+              )
+            }
+          </Route>
+        </div>
       )
     }
     </>

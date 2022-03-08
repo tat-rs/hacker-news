@@ -6,35 +6,43 @@ import './Comment.css';
 
 function Comment(props) {
 
-  const [comment, setComment] = React.useState([]);
+  const [comment, setComment] = React.useState(null);
 
   React.useEffect(() => {
     api.getCommentById(props.id)
       .then((data) => {
-        setComment(data)
+        !data.dead && !data.deleated && setComment(data)
       })
-  }, []);
+      .catch((err) => {
+        console.log(err)
+      })
 
-  const data = convertTimestamp(comment.time);
+  }, [props.id]);  
 
   return (
-    <li>
-      <p>{`by ${comment.by}:`}</p>
-      <p>{comment.text}</p>
-      <p>{data}</p>
-
+    <>
       {
-        comment.kids && (
-          <ul>
+        comment && (
+          <li className="comments__container">
+            <p className="comments__author">{comment.by}</p>
+            <div className="comments__text" dangerouslySetInnerHTML={{__html:comment.text}} />
+            <p className="comments__data">{convertTimestamp(comment.time)}</p>
+
             {
-              comment.kids.map((id) => (
-                <Comment id={id} key={id}/>
-              ))
+              comment.kids && (
+                <ul className="comments__list">
+                  {
+                    comment.kids.map((id) => (
+                      <Comment id={id} key={id}/>
+                    ))
+                  }
+                </ul>
+              )
             }
-          </ul>
+          </li>
         )
       }
-    </li>
+    </>
   )
 }
 

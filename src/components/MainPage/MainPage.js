@@ -6,17 +6,18 @@ import './MainPage.css';
 function MainPage(props) {
 
   return (
-    <main className="news">
-      <ol className="news__list">
-        
-        {
-          props.list.length > 0 && props.list.map((id) => (
-            <NewsItem id={id} key={id} handleActiveItemClick={props.handleActiveItemClick}/>
-          ))
-        }
 
-      </ol>
-    </main>
+    <ol className="content__list">
+        
+      {
+        props.list.length > 0 && props.list.map((id) => (
+          <li className="content__item story" id={id} key={id}>
+            <NewsItem id={id} handleActiveItemClick={props.handleActiveItemClick} />
+          </li>
+        ))
+      }
+
+    </ol>
   )
 }
 

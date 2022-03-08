@@ -1,0 +1,32 @@
+.loader {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.loader-img {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.loader-img:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #ff6600;
+  border-color: #ff6600 transparent #ff6600 transparent;
+  animation: loader-img 1.2s linear infinite;
+}
+@keyframes loader-img {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
