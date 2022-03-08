@@ -24,7 +24,7 @@
 Для того, чтобы запустить проект, необходимо:
 
 * Склонировать этот репрозиторий: (https://github.com/tat-rs/hacker-news.git);
-* Установить зависимости: ### `yarn или npm install`
-* Запуск проекта: ### `npm start`
+* Установить зависимости: `yarn или npm install`
+* Запуск проекта: `npm start`
 
 [Ссылка на сайт в GitHub Pages]: (https://tat-rs.github.io/hacker-news/)
