@@ -11,7 +11,6 @@ import './NewsItem.css';
 function NewsItem(props) {
 
   const [news, setNews] = React.useState(null);
-  /* const [commentss, setComments] = React.useState([]) */
 
   React.useEffect(() => {
 
@@ -22,32 +21,8 @@ function NewsItem(props) {
         .catch((err) => {
           console.log(err)
         })
-        .finally(() => props.isLoading && props.handlLoading())
     
-  }, [props.id, props.isLoading]);
-
-  /* React.useEffect(() => {
-    let filesArray = []
-    news && news.kids && Promise.all(news.kids.map((el) => {
-
-      return api.getCommentById(el)
-        .then((data) => {
-          if(data && !data.dead && !data.deleted) {
-            return filesArray = data
-          }
-          return
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    }))
-      .then((res) => setComments(res))
-
-      console.log(filesArray);
-    
-  }, [news]);
-
-  console.log(commentss) */
+  }, [props.id]);
 
   const data = news && convertTimestamp(news.time);
 
@@ -58,9 +33,9 @@ function NewsItem(props) {
   return (
     <>
 
-          {
-            !news && <Loader />
-          }
+    {
+      !news && <Loader />
+    }
 
     {
       news && (
@@ -77,11 +52,6 @@ function NewsItem(props) {
             <p className="story__info">{`${news.score} points`}</p>
             <p className="story__info">{`by ${news.by}`}</p>
             <p className="story__info">{data}</p>
-            {
-              news.kids && (
-                <p className="story__info">КОММЕНТАРИИ: {news.kids.length}</p>
-              )
-            }
           </div>
           <Route path='/news/:id'>
             

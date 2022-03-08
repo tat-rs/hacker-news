@@ -4,6 +4,8 @@
 
 .news {
   width: 100%;
+  box-sizing: border-box;
+  padding: 0 10px;
 }
 
 .story__title {
@@ -29,6 +31,10 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .story__link {
@@ -66,5 +72,12 @@
   .story__info {
     font-size: 12px;
     line-height: 14px;
+  }
+}
+
+@media (max-width:475px) {
+  .story__container {
+    flex-direction: column;
+    gap: 5px;
   }
 }

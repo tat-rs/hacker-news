@@ -20,28 +20,8 @@
 .header__navbar {
   font-style: normal;
   font-weight: normal;
-  font-size: 20px;
-  line-height: 22px;
-} 
-.navbar {
-  flex-grow: 1;
-}
-
-.navbar__list {
-  display: flex;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar_item {
-  padding: 0 10px;
-  border-right: 2px solid #000;
-  cursor: pointer;
-}
-
-.navbar_item:last-of-type {
-  border: none;
+  font-size: 16px;
+  line-height: 16px;
 }
 
 .header__login {
@@ -53,10 +33,48 @@
   line-height: 22px;
 }
 
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
 .header__container_size_little {
   display: none;
 }
 
-.header__container_size_big {
-  display: flex;
+@media (max-width: 768px) {
+  .header {
+    padding: 8px 25px;
+    justify-content: space-between;
+  }
+  .header__logo {
+    width: 50px;
+    height: 45px;
+    background-image: url(../../images/icon-mini.png);
+    background-size: contain;
+  }
+
+  .header__container_size_big {
+    display: none;
+  }
+
+  .header__container_size_little {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 35px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    width: 40%;
+    min-width: 270px;
+    height: 100%;
+    background-color: #f6f6ef;
+    border-right: 2px solid #ff6600;
+  }
+
 }

@@ -16,8 +16,6 @@ function App() {
 
   const [selectedNews, setSelectedNews] = React.useState(null);
 
-  const [isLoading, setIsLoading] = React.useState(true);
-
   const [isMenuOpen, setMenuOpen] = React.useState(false);
 
   const history = useHistory();
@@ -34,9 +32,11 @@ function App() {
         console.log(err)
       })
 
-      const newsId = Number(location.pathname.split(`news/`)[1])
+    const newsId = Number(location.pathname.split(`news/`)[1])
 
-      setSelectedNews(newsId)
+    setSelectedNews(newsId)
+
+    setMenuOpen(false)
   
     }, [location.pathname]);
 
@@ -46,10 +46,6 @@ function App() {
 
   function handleMenuClick() {
     setMenuOpen(!isMenuOpen)
-  }
-
-  function handlLoading() {
-    setIsLoading(false)
   }
 
   return (
@@ -63,7 +59,7 @@ function App() {
 
         <Route exact path="/news">
 
-          <MainPage list={listOfNewsId} handleActiveItemClick={handleActiveItemClick} setSelectedNews={setSelectedNews} isLoading={isLoading} handlLoading={handlLoading}/>
+          <MainPage list={listOfNewsId} handleActiveItemClick={handleActiveItemClick} setSelectedNews={setSelectedNews} />
 
         </Route>
 
@@ -72,7 +68,7 @@ function App() {
           {
             selectedNews && (
 
-              <NewsItem id={selectedNews} selectedNews={selectedNews} isLoading={isLoading} handlLoading={handlLoading}/>
+              <NewsItem id={selectedNews} selectedNews={selectedNews} />
 
             )
           }
