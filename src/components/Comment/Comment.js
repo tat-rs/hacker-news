@@ -11,13 +11,14 @@ function Comment(props) {
   React.useEffect(() => {
     api.getCommentById(props.id)
       .then((data) => {
-        !data.dead && !data.deleated && setComment(data)
+        !data.dead && !data.deleted && setComment(data)
       })
       .catch((err) => {
         console.log(err)
       })
 
-  }, [props.id]);  
+
+  }, [props.id]);
 
   return (
     <>

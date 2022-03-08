@@ -6,7 +6,8 @@ function Loader(props) {
 
   return (
     <div className="loader">
-      <div className="loader-img"></div>
+      {/* <div className="loader-img"></div> */}
+      <div className="lds-facebook"><div></div><div></div><div></div></div>
     </div>
   )
 }

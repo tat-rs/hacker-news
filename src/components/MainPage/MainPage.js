@@ -1,4 +1,5 @@
 import React from "react";
+import Loader from "../Loader/Loader";
 import NewsItem from "../NewsItem/NewsItem";
 
 import './MainPage.css';

@@ -11,6 +11,7 @@ import './NewsItem.css';
 function NewsItem(props) {
 
   const [news, setNews] = React.useState(null);
+  /* const [commentss, setComments] = React.useState([]) */
 
   React.useEffect(() => {
 
@@ -21,9 +22,32 @@ function NewsItem(props) {
         .catch((err) => {
           console.log(err)
         })
-        .finally(() => props.isLoading && props.setIsLoading(false))
+        .finally(() => props.isLoading && props.handlLoading())
     
-  }, [props.id]);
+  }, [props.id, props.isLoading]);
+
+  /* React.useEffect(() => {
+    let filesArray = []
+    news && news.kids && Promise.all(news.kids.map((el) => {
+
+      return api.getCommentById(el)
+        .then((data) => {
+          if(data && !data.dead && !data.deleted) {
+            return filesArray = data
+          }
+          return
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }))
+      .then((res) => setComments(res))
+
+      console.log(filesArray);
+    
+  }, [news]);
+
+  console.log(commentss) */
 
   const data = news && convertTimestamp(news.time);
 
@@ -34,19 +58,18 @@ function NewsItem(props) {
   return (
     <>
 
-    {
-      props.isLoading && <Loader />
-    }
+          {
+            !news && <Loader />
+          }
 
     {
       news && (
-        <div className="story">
+        <div className="news">
           <h2 className="story__title" onClick={handleActiveItemClick}>{news.title}</h2>
           {
-            props.selectedNews && (
+            props.selectedNews && news.url && (
               <>
-                <p className="story__link">Подробнее на: <a className="story__link link" href={news.url} target="_blank" rel="noopener noreferrer">{news.url}</a></p> 
-                {/* <a className="story__link link" href={news.url} target="_blank" rel="noopener noreferrer">{news.url}</a> */}
+                <p className="story__link">Подробнее на: <a className="story__link link" href={news.url} target="_blank" rel="noopener noreferrer">{news.url}</a></p>
               </>
             )
           }
