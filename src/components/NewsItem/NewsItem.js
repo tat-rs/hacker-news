@@ -21,7 +21,9 @@ function NewsItem(props) {
         .catch((err) => {
           console.log(err)
         })
-  }, []);
+        .finally(() => props.isLoading && props.setIsLoading(false))
+    
+  }, [props.id]);
 
   const data = news && convertTimestamp(news.time);
 
@@ -31,6 +33,10 @@ function NewsItem(props) {
 
   return (
     <>
+
+    {
+      props.isLoading && <Loader />
+    }
 
     {
       news && (

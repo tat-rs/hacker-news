@@ -86,6 +86,7 @@ function App() {
         <Route exact path="/news">
 
           <MainPage list={listOfNewsId} handleActiveItemClick={handleActiveItemClick} setSelectedNews={setSelectedNews} />
+
         </Route>
 
         <Route path="/news/:id">
@@ -93,7 +94,7 @@ function App() {
           {
             selectedNews && (
 
-              <NewsItem id={selectedNews} selectedNews={selectedNews} />
+              <NewsItem id={selectedNews} selectedNews={selectedNews} isLoading={isLoading} setIsLoading={setIsLoading}/>
 
             )
           }
