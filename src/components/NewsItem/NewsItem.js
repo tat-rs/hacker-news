@@ -53,9 +53,9 @@ function NewsItem(props) {
             <p className="story__info">{`by ${news.by}`}</p>
             <p className="story__info">{data}</p>
           </div>
-          <Route path='/news/:id'>
+          <Route path='/hacker-news/:id'>
             
-            <Link to='/news' className="story__link-back link">Вернуться к списку новостей</Link>
+            <Link to='/hacker-news' className="story__link-back link">Вернуться к списку новостей</Link>
 
             {
               news.kids ? 

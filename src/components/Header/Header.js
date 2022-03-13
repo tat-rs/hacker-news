@@ -12,7 +12,7 @@ function Header(props) {
     <>
 
       <header className="header">
-      <Link to="/news" className="header__logo">
+      <Link to="/hacker-news" className="header__logo">
       </Link>
       <div className='header__container header__container_size_big'>
         <NavBar class='header__container_size_big'/>

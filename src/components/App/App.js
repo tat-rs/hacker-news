@@ -28,7 +28,6 @@ function App() {
     api.getStoriesId()
       .then((data) => {
         setListOfNewsId(data)
-        console.log(data)
       })
       .catch((err) => {
         console.log(err)
@@ -44,7 +43,7 @@ function App() {
 
   React.useEffect(() => {
   
-    const newsId = Number(location.pathname.split(`news/`)[1])
+    const newsId = Number(location.pathname.split(`/hacker-news/`)[1])
   
     setSelectedNews(newsId)
   
@@ -53,7 +52,7 @@ function App() {
   }, [location.pathname]);
 
   function handleActiveItemClick(data) {
-    history.push(`/news/${data.id}`);
+    history.push(`/hacker-news/${data.id}`);
   }
 
   function handleMenuClick() {
@@ -75,7 +74,7 @@ function App() {
 
         </Route>
 
-        <Route path="/hacker-news/news/:id">
+        <Route path="/hacker-news/:id">
 
           {
             selectedNews && (

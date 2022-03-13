@@ -10,7 +10,7 @@ function PageNotFound() {
       <h3 className="not-found__title">
        <span>404</span>Страница не найдена
       </h3>
-      <Link className="button button_type_to-main" to="/hacker-news/news">Вернуться на главную страницу</Link>
+      <Link className="button button_type_to-main" to="/hacker-news">Вернуться на главную страницу</Link>
     </div>
   )
 }
