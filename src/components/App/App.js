@@ -69,13 +69,13 @@ function App() {
 
       <Switch>
 
-        <Route exact path="/news">
+        <Route exact path="/hacker-news/news">
 
           <MainPage list={listOfNewsId} handleActiveItemClick={handleActiveItemClick} setSelectedNews={setSelectedNews} />
 
         </Route>
 
-        <Route path="/news/:id">
+        <Route path="/hacker-news/news/:id">
 
           {
             selectedNews && (
@@ -88,12 +88,12 @@ function App() {
         </Route>
 
         <Route exact path="/">
-          <Redirect to="/news" />
-      </Route>
+          <Redirect to="/hacker-news/news" />
+        </Route>
 
-      <Route path="*">
-        <PageNotFound />
-      </Route>
+        <Route path="*">
+          <PageNotFound />
+        </Route>
 
       </Switch>
 
