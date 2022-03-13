@@ -77,19 +77,25 @@ function App() {
         <Route path="/hacker-news/:id">
 
           {
-            selectedNews && (
+            selectedNews && selectedNews!== NaN ? (
 
               <NewsItem id={selectedNews} selectedNews={selectedNews} />
 
+            ) : (
+              <PageNotFound />
             )
           }
 
         </Route>
 
+        <Route exact path="/">
+           <Redirect to="/hacker-news" />
+        </Route> 
+
         <Route path="*">
           <PageNotFound />
         </Route>
-
+        
       </Switch>
 
       </main>
