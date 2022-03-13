@@ -7,6 +7,7 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import MainPage from "../MainPage/MainPage";
 import NewsItem from "../NewsItem/NewsItem";
+import PageNotFound from "../PageNotFound/PageNotFound";
 
 import "./App.css";
 
@@ -88,7 +89,11 @@ function App() {
 
         <Route exact path="/">
           <Redirect to="/news" />
-      </Route> 
+      </Route>
+
+      <Route path="*">
+        <PageNotFound />
+      </Route>
 
       </Switch>
 
