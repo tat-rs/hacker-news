@@ -69,7 +69,7 @@ function App() {
 
       <Switch>
 
-        <Route exact path="/hacker-news/news">
+        <Route exact path="/hacker-news">
 
           <MainPage list={listOfNewsId} handleActiveItemClick={handleActiveItemClick} setSelectedNews={setSelectedNews} />
 
@@ -85,10 +85,6 @@ function App() {
             )
           }
 
-        </Route>
-
-        <Route exact path="/">
-          <Redirect to="/hacker-news/news" />
         </Route>
 
         <Route path="*">
