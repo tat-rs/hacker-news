@@ -27,6 +27,7 @@ function App() {
     api.getStoriesId()
       .then((data) => {
         setListOfNewsId(data)
+        console.log(data)
       })
       .catch((err) => {
         console.log(err)
@@ -38,7 +39,17 @@ function App() {
 
     setMenuOpen(false)
   
-    }, [location.pathname]);
+    }, []);
+
+  React.useEffect(() => {
+  
+    const newsId = Number(location.pathname.split(`news/`)[1])
+  
+    setSelectedNews(newsId)
+  
+    setMenuOpen(false)
+    
+  }, [location.pathname]);
 
   function handleActiveItemClick(data) {
     history.push(`/news/${data.id}`);
