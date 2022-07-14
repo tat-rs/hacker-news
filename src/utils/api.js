@@ -12,7 +12,7 @@ class Api {
   };
 
   getStoriesId() {
-    return fetch(`${this._url}/v0/newstories.json?print=pretty&orderBy="$key"&limitToFirst=100`, {
+    return fetch(`${this._url}/v0/newstories.json?orderBy="$key"&limitToFirst=100`, {
       method: "GET",
       headers: this._headers,
     })
@@ -20,7 +20,7 @@ class Api {
   }
 
    getStory(storyId) {
-    return fetch(`${this._url}/v0/item/${storyId}.json?print=pretty`, {
+    return fetch(`${this._url}/v0/item/${storyId}.json`, {
       method: "GET",
       headers: this._headers,
     })
@@ -28,7 +28,7 @@ class Api {
   }
 
    getCommentById(commentId) {
-    return fetch(`${this._url}/v0/item/${commentId}.json?print=pretty`, {
+    return fetch(`${this._url}/v0/item/${commentId}.json`, {
       method: "GET",
       headers: this._headers,
     })
