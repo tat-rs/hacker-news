@@ -10,7 +10,7 @@ function MainPage(props) {
     <ol className="content__list">
         
       {
-        props.list.length > 0 && props.list.map((id) => (
+        props.list.length > 0 && props.list.map((id, index) => (
           <li className="content__item story" id={id} key={id}>
             <NewsItem id={id} handleActiveItemClick={props.handleActiveItemClick} />
           </li>

@@ -17,8 +17,6 @@ function App() {
 
   const [selectedNews, setSelectedNews] = React.useState(null);
 
-  const [isMenuOpen, setMenuOpen] = React.useState(false);
-
   const history = useHistory();
 
   const location = useLocation();
@@ -36,8 +34,6 @@ function App() {
     const newsId = Number(location.pathname.split(`news/`)[1])
 
     setSelectedNews(newsId)
-
-    setMenuOpen(false)
   
     }, []);
 
@@ -46,8 +42,7 @@ function App() {
     const newsId = Number(location.pathname.split(`/hacker-news/`)[1])
   
     setSelectedNews(newsId)
-  
-    setMenuOpen(false)
+
     
   }, [location.pathname]);
 
@@ -55,14 +50,10 @@ function App() {
     history.push(`/hacker-news/${data.id}`);
   }
 
-  function handleMenuClick() {
-    setMenuOpen(!isMenuOpen)
-  }
-
   return (
     <div className="page__content">
 
-      <Header handleMenuClick={handleMenuClick} isMenuOpen={isMenuOpen}/>
+      <Header />
 
       <main className="content">
 

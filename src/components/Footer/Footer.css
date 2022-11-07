@@ -4,10 +4,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  min-height: 120px;
+  min-height: 80px;
   box-sizing: border-box;
-  padding: 25px 15px;
+  padding: 15px 15px;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -23,30 +22,11 @@
   color: rgb(100, 99, 99);
 }
 
-.form {
-  display: flex;
-  align-items: center;
-}
-
-.form__title {
-  margin: 0 8px 0 0;
-}
-
-.form__input {
-  min-height: 20px;
-  box-sizing: border-box;
-  padding: 8px;
-}
-
 @media (max-width: 768px) {
   .footer {
     font-size: 12px;
     line-height: 14px;
     gap: 10px
-  }
-  .form__input {
-    min-height: 14px;
-    padding: 5px;
   }
 }
 
