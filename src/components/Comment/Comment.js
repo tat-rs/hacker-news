@@ -39,7 +39,7 @@ function Comment(props) {
                 <ul className="comments__list">
                   {
                     comment.kids.map((id) => (
-                      <Comment id={id} key={id}/>
+                      <Comment id={id} key={id} />
                     ))
                   }
                 </ul>

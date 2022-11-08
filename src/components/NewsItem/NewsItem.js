@@ -60,11 +60,11 @@ function NewsItem(props) {
             {
               news.kids ? 
               (<div className="comments">
-                <p className="comments__count">Комментарии: {news.kids.length}</p>
+                <p className="comments__count">Комментарии: {news.descendants}</p>
                 <ul className="comments__list">
                   {
                   news.kids.sort().map((id) => (
-                     <Comment id={id} key={id}/>
+                     <Comment id={id} key={id} />
                     ))
                   }
                 </ul>
