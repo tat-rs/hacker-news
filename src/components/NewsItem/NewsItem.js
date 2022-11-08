@@ -51,6 +51,7 @@ function NewsItem(props) {
           <div className="story__container">
             <p className="story__info">{`${news.score} points`}</p>
             <p className="story__info">{`by ${news.by}`}</p>
+            <p className="story__info">comments: {news.descendants}</p>
             <p className="story__info">{data}</p>
           </div>
           <Route path='/hacker-news/:id'>
