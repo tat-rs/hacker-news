@@ -13,86 +13,92 @@ import "./App.css";
 
 function App() {
 
-  const [listOfNewsId, setListOfNewsId] = React.useState([]);
-
-  const [selectedNews, setSelectedNews] = React.useState(null);
+  const [listOfNews, setListOfNews] = React.useState([]);
+  const [selectedNews, setSelectedNews] = React.useState(JSON.parse(localStorage.getItem('selectedNews')) || {});
+  const [isLoading, setIsloading] = React.useState(false);
 
   const history = useHistory();
-
   const location = useLocation();
 
+    React.useEffect(() => {
+      setIsloading(true);
+        async function getNews() {
+          try {
+            const newsIds = await api.getStoriesId();
+            const allNews = newsIds.map(async(id) => {
+              const news = await api.getStory(id)
+              return news
+            })
+            Promise.all(allNews)
+              .then((data) => {
+                setListOfNews(data)
+              })
+              .finally(() => setIsloading(false))
+          } catch(err) {
+            console.log(err)
+          }
+        }
+
+        getNews();
+  
+      }, []);
+
   React.useEffect(() => {
+    setIsloading(true);
 
-    api.getStoriesId()
-      .then((data) => {
-        setListOfNewsId(data)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-
-    const newsId = Number(location.pathname.split(`news/`)[1])
-
-    setSelectedNews(newsId)
-  
-    }, []);
-
-  React.useEffect(() => {
-  
-    const newsId = Number(location.pathname.split(`/hacker-news/`)[1])
-  
-    setSelectedNews(newsId)
-
-    
+    async function getSelectedNews() {
+      const newsId = Number(location.pathname.split(`/hacker-news/`)[1])
+      if(location.pathname.split(`/hacker-news/`).length > 1) {
+        const news = await api.getStory(newsId);
+        setSelectedNews(news)
+        localStorage.setItem('selectedNews', JSON.stringify(news));
+        setIsloading(false)
+      }
+    }
+    getSelectedNews()
   }, [location.pathname]);
 
+
   function handleActiveItemClick(data) {
-    history.push(`/hacker-news/${data.id}`);
+    history.push(`/hacker-news/${data}`);
   }
 
   return (
     <div className="page__content">
-
       <Header />
-
       <main className="content">
-
       <Switch>
-
         <Route exact path="/hacker-news">
-
-          <MainPage list={listOfNewsId} handleActiveItemClick={handleActiveItemClick} setSelectedNews={setSelectedNews} />
-
+          <MainPage
+            list={listOfNews}
+            handleActiveItemClick={handleActiveItemClick}
+            setSelectedNews={setSelectedNews}
+            isLoading={isLoading} />
         </Route>
-
         <Route path="/hacker-news/:id">
 
           {
-            selectedNews && selectedNews!== NaN ? (
+            selectedNews ? (
 
-              <NewsItem id={selectedNews} selectedNews={selectedNews} />
+              <NewsItem
+                news={selectedNews}
+                selectedNews={selectedNews}
+                isLoading={isLoading} />
 
             ) : (
               <PageNotFound />
             )
           }
-
         </Route>
-
         <Route exact path="/">
            <Redirect to="/hacker-news" />
         </Route> 
-
         <Route path="*">
           <PageNotFound />
-        </Route>
-        
+        </Route>       
       </Switch>
-
       </main>
-
-      <Footer />
-      
+      <Footer />     
     </div>
   );
 }
