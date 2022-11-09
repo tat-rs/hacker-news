@@ -16,12 +16,6 @@ function NewsItem(props) {
     props.handleActiveItemClick(props.news.id)
   }
 
-  if(location.pathname.split(`/hacker-news/`).length > 1 && props.isLoading) {
-    return (
-      <Loader />
-    )
-  }
-
   return (
     <>
 
@@ -47,7 +41,7 @@ function NewsItem(props) {
             <Link to='/hacker-news' className="story__link-back link">Вернуться к списку новостей</Link>
 
             {
-              props.news?.kids ? 
+            props.news.kids ? 
               (<div className="comments">
                 <p className="comments__count">Комментарии: {props.news.descendants}</p>
                 <ul className="comments__list">
