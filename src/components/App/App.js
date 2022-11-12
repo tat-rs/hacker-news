@@ -44,7 +44,6 @@ function App() {
       }, []);
 
   React.useEffect(() => {
-    setIsloading(true);
 
     async function getSelectedNews() {
       const newsId = Number(location.pathname.split(`/hacker-news/`)[1])
@@ -52,7 +51,9 @@ function App() {
         const news = await api.getStory(newsId);
         setSelectedNews(news)
         localStorage.setItem('selectedNews', JSON.stringify(news));
-        setIsloading(false)
+      } else {
+        setSelectedNews({})
+        localStorage.removeItem('selectedNews');
       }
     }
     getSelectedNews()

@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import api from "../../utils/api";
 import { convertTimestamp } from "../../utils/convertTimestamp";
 
@@ -7,17 +8,22 @@ import './Comment.css';
 function Comment(props) {
 
   const [comment, setComment] = React.useState(null);
+  const location = useLocation();
 
   React.useEffect(() => {
-    api.getCommentById(props.id)
+    if(location.pathname.split(`/hacker-news/`).length > 1) {
+      api.getCommentById(props.id)
       .then((data) => {
         setComment(data)
       })
       .catch((err) => {
         console.log(err)
       })
+    } else {
+      setComment(null)
+    }
 
-  }, [props.id]);
+  }, [props.id, location.pathname]);
 
   return (
     <>

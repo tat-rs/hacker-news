@@ -1,15 +1,13 @@
 import React from "react";
-import { Link, Route, useLocation } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
 import { convertTimestamp } from "../../utils/convertTimestamp";
 import Comment from "../Comment/Comment";
-import Loader from "../Loader/Loader";
 
 import './NewsItem.css';
 
 function NewsItem(props) {
 
-  const location = useLocation();
   const data = props.news && convertTimestamp(props.news.time);
 
   function handleActiveItemClick() {
