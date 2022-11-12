@@ -14,6 +14,8 @@ import "./App.css";
 function App() {
 
   const [listOfNews, setListOfNews] = React.useState([]);
+  const [renderedNews, setRenderedNews] = React.useState([]);
+  const [countNews, setCountNews] = React.useState(20);
   const [selectedNews, setSelectedNews] = React.useState(JSON.parse(localStorage.getItem('selectedNews')) || {});
   const [isLoading, setIsloading] = React.useState(false);
 
@@ -29,9 +31,10 @@ function App() {
               const news = await api.getStory(id)
               return news
             })
-            Promise.all(allNews)
+            await Promise.all(allNews)
               .then((data) => {
                 setListOfNews(data)
+                setRenderedNews(listOfNews.slice(0, countNews))
               })
               .finally(() => setIsloading(false))
           } catch(err) {
@@ -56,12 +59,21 @@ function App() {
         localStorage.removeItem('selectedNews');
       }
     }
-    getSelectedNews()
+    getSelectedNews();
+    
   }, [location.pathname]);
+
+  React.useEffect(() => {
+    listOfNews && renderedNews && setRenderedNews(listOfNews.slice(0, countNews))
+  }, [countNews, listOfNews])
 
 
   function handleActiveItemClick(data) {
     history.push(`/hacker-news/${data}`);
+  }
+
+  function moreNews() {
+    setCountNews(countNews + 20);
   }
 
   return (
@@ -71,10 +83,12 @@ function App() {
       <Switch>
         <Route exact path="/hacker-news">
           <MainPage
-            list={listOfNews}
+            list={renderedNews}
             handleActiveItemClick={handleActiveItemClick}
             setSelectedNews={setSelectedNews}
-            isLoading={isLoading} />
+            isLoading={isLoading}
+            moreNews={moreNews}
+            countNews={countNews} />
         </Route>
         <Route path="/hacker-news/:id">
 
@@ -83,8 +97,7 @@ function App() {
 
               <NewsItem
                 news={selectedNews}
-                selectedNews={selectedNews}
-                isLoading={isLoading} />
+                selectedNews={selectedNews} />
 
             ) : (
               <PageNotFound />

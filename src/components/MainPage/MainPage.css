@@ -12,6 +12,21 @@
   letter-spacing: 2px;
 }
 
+.content__btn {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 280px;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  border: 1px solid #ff6600;
+  background-color: inherit;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #ff6600;
+}
+
 @media (max-width: 768px) {
   .content__title {
     margin: 0 0 15px 0;
@@ -20,6 +35,12 @@
     font-weight: 500;
     line-height: 28px;
     letter-spacing: 2px;
+  }
+
+  .content__btn {
+    max-width: 100%;
+    font-size: 14px;
+    line-height: 18px;
   }
 }
 

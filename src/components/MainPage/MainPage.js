@@ -13,17 +13,27 @@ function MainPage(props) {
         props.isLoading ? (
           <Loader />
         ) : (
-          <ol className="content__list">
+          <>
+            <ol className="content__list">
         
-            {
-              props.list.length > 0 && props.list.map((news) => (
-                <li className="content__item story" id={news.id} key={news.id}>
-                  <NewsItem news={news} handleActiveItemClick={props.handleActiveItemClick} />
-                </li>
-              ))
-            }
+              {
+                props.list.length > 0 && props.list.map((news) => (
+                  <li className="content__item story" id={news.id} key={news.id}>
+                    <NewsItem
+                      news={news}
+                      handleActiveItemClick={props.handleActiveItemClick}
+                      />
+                  </li>
+                ))
+              }
 
-          </ol>
+            </ol>
+            {
+              props.countNews < 100 && (
+                <button className="content__btn" type="button" onClick={props.moreNews} >Еще</button>
+              )
+            }
+          </>
         )
       }
     </section>
