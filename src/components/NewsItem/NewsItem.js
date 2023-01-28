@@ -24,7 +24,7 @@ function NewsItem(props) {
           {
             props.selectedNews && props.selectedNews.url === props.news.url && (
               <>
-                <p className="story__link">Подробнее на: <a className="story__link link" href={props.news.url} target="_blank" rel="noopener noreferrer">{props.news.url}</a></p>
+                <p className="story__link">Подробнее на: <a className="story__link link" href={props.news.url} target="_blank" rel="noopener noreferrer">{props.selectedNews.url}</a></p>
               </>
             )
           }
